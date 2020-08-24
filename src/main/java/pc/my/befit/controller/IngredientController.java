@@ -1,20 +1,23 @@
 package pc.my.befit.controller;
 
+import com.google.gson.Gson;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pc.my.befit.api.dto.AddIngredientDto;
 import pc.my.befit.api.dto.IngredientDto;
+import pc.my.befit.api.dto.RemovedItemDto;
 import pc.my.befit.api.dto.UpdateIngredientDto;
-import pc.my.befit.model.entity.Ingredient;
+import pc.my.befit.api.enumeration.DeletionStatus;
+import pc.my.befit.exception.ElementDoesNotExistException;
 import pc.my.befit.api.service.IngredientService;
 import org.springframework.http.MediaType;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @Validated
@@ -52,6 +55,27 @@ public class IngredientController {
     public ResponseEntity<Void> deleteIngredient(@PathVariable("ingredientid") @NotNull Long ingredientId) {
         ingredientService.delete(ingredientId);
         return ResponseEntity.noContent().build();
+    }
+
+    @DeleteMapping(value = "/deletelist", consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> deleteIngredientList(@RequestBody List<Long> ingredientIdList) {
+        if (ingredientIdList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Empty list of Ingredient Ids received");
+        }
+
+        List<RemovedItemDto> deletedIngredientList = new ArrayList<>();
+
+        for (Long ingredientId : ingredientIdList) {
+            try {
+                ingredientService.delete(ingredientId);
+                deletedIngredientList.add(new RemovedItemDto(ingredientId, DeletionStatus.SUCCESS, null));
+            } catch (ElementDoesNotExistException e) {
+//                log.error(e.getMessage(), e);
+                deletedIngredientList.add(new RemovedItemDto(ingredientId, DeletionStatus.ERROR, e.getMessage()));
+            }
+        }
+        return ResponseEntity.ok(new Gson().toJson(deletedIngredientList));
     }
 
 }
