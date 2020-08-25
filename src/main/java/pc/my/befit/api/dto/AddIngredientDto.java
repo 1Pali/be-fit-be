@@ -37,4 +37,7 @@ public class AddIngredientDto {
 
     @NotNull
     private Double price;
+
+    @NotNull
+    private Integer idIngredientType;
 }

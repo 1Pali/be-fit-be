@@ -3,6 +3,7 @@ package pc.my.befit.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pc.my.befit.model.catalog.CatIngredientType;
 
 import javax.persistence.*;
 
@@ -40,4 +41,8 @@ public class Ingredient {
 
     @Column(name = "PRICE")
     private Double price;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "INGREDIENT_TYPE_ID")
+    private CatIngredientType ingredientType;
 }

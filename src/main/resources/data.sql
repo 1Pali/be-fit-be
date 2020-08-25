@@ -1,0 +1,11 @@
+INSERT INTO cat_ingredient_type VALUES (1, 'MEAT');
+INSERT INTO cat_ingredient_type VALUES (2, 'FISH_AND_SEA');
+INSERT INTO cat_ingredient_type VALUES (3, 'EGG');
+INSERT INTO cat_ingredient_type VALUES (4, 'MILK_PRODUCT');
+INSERT INTO cat_ingredient_type VALUES (5, 'CEREALS');
+INSERT INTO cat_ingredient_type VALUES (6, 'LEGUMES');
+INSERT INTO cat_ingredient_type VALUES (7, 'FRUIT');
+INSERT INTO cat_ingredient_type VALUES (8, 'VEGETABLE');
+INSERT INTO cat_ingredient_type VALUES (9, 'FLUID');
+INSERT INTO cat_ingredient_type VALUES (10, 'ADDITIVE');
+INSERT INTO cat_ingredient_type VALUES (11, 'NUT');

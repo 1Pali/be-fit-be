@@ -5,6 +5,7 @@ import pc.my.befit.Repository.IngredientRepository;
 import pc.my.befit.api.dto.AddIngredientDto;
 import pc.my.befit.api.dto.IngredientDto;
 import pc.my.befit.api.dto.UpdateIngredientDto;
+import pc.my.befit.api.enumeration.IngredientType;
 import pc.my.befit.api.service.IngredientService;
 import pc.my.befit.exception.ElementDoesNotExistException;
 import pc.my.befit.model.entity.Ingredient;
@@ -68,6 +69,8 @@ public class IngredientServiceImpl implements IngredientService {
         existingIngredient.setFat(dto.getFat());
         existingIngredient.setFiber(dto.getFiber());
         existingIngredient.setPrice(dto.getPrice());
+        existingIngredient.setPrice(dto.getPrice());
+        existingIngredient.setIngredientType(IngredientType.fromId(dto.getIdIngredientType()).toCatIngredientType());
         return INGREDIENT_DTO_MAPPER.getDestination(ingredientRepository.save(existingIngredient));
     }
 
@@ -83,6 +86,7 @@ public class IngredientServiceImpl implements IngredientService {
         ingredient.setFat(dto.getFat());
         ingredient.setFiber(dto.getFiber());
         ingredient.setPrice(dto.getPrice());
+        ingredient.setIngredientType(IngredientType.fromId(dto.getIdIngredientType()).toCatIngredientType());
         return INGREDIENT_DTO_MAPPER.getDestination(ingredientRepository.save(ingredient));
     }
 }

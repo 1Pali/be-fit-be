@@ -2,6 +2,7 @@ package pc.my.befit.api.dto;
 
 
 import com.googlecode.jmapper.annotations.JGlobalMap;
+import com.googlecode.jmapper.annotations.JMap;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,4 +40,7 @@ public class UpdateIngredientDto {
 
     @NotNull
     private Double price;
+
+    @NotNull
+    private Integer idIngredientType;
 }
