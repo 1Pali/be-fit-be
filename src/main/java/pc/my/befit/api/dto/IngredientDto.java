@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
-@JGlobalMap(excluded={"idIngredientType", "ingredientTypeName"})
+@JGlobalMap(excluded={"idIngredientType", "ingredientTypeName", "idIngredientImage"})
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -46,4 +46,6 @@ public class IngredientDto {
 
     @JMap("${ingredientType.name}")
     private String ingredientTypeName;
+
+    private Long idIngredientImage;
 }

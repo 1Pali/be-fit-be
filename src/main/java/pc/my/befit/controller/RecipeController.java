@@ -31,24 +31,24 @@ public class RecipeController {
     }
 
     @GetMapping(value = "/{recipeid}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecipeDto> getGroupById(@PathVariable("recipeid") @NotNull Long recipeId) {
+    public ResponseEntity<RecipeDto> getRecipeById(@PathVariable("recipeid") @NotNull Long recipeId) {
         return ResponseEntity.ok(recipeService.getById(recipeId));
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecipeDto> createGroup(@Valid @RequestBody AddRecipeDto dto) {
+    public ResponseEntity<RecipeDto> createRecipe(@Valid @RequestBody AddRecipeDto dto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(recipeService.create(dto));
     }
 
     @PutMapping(value = "/{recipeid}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecipeDto> updateGroup(@PathVariable("recipeid") @NotNull Long recipeId,
+    public ResponseEntity<RecipeDto> updateRecipe(@PathVariable("recipeid") @NotNull Long recipeId,
                                                      @RequestBody UpdateRecipeDto dto) {
 
         return ResponseEntity.accepted().body(recipeService.update(recipeId, dto));
     }
 
     @DeleteMapping(value = "/{recipeid}")
-    public ResponseEntity<Void> deleteGroup(@PathVariable("recipeid") @NotNull Long recipeId) {
+    public ResponseEntity<Void> deleteRecipe(@PathVariable("recipeid") @NotNull Long recipeId) {
         recipeService.delete(recipeId);
         return ResponseEntity.noContent().build();
     }

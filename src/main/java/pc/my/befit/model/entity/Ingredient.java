@@ -45,4 +45,8 @@ public class Ingredient {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "INGREDIENT_TYPE_ID")
     private CatIngredientType ingredientType;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "INGREDIENT_IMAGE_ID")
+    private File ingredientImage;
 }
