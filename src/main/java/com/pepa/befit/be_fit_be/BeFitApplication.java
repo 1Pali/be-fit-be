@@ -12,17 +12,4 @@ public class BeFitApplication {
 		SpringApplication.run(BeFitApplication.class, args);
 	}
 
-	@Component
-	public class CommandLineAppStartupRunner implements CommandLineRunner {
-		public CommandLineAppStartupRunner() {
-			
-		}
-
-		@Override
-		public void run(String...args) throws Exception {
-			System.out.println(System.getenv("SPRING_DATASOURCE_URL"));
-			System.out.println(System.getenv("SPRING_DATASOURCE_USERNAME"));
-			System.out.println(System.getenv("SPRING_DATASOURCE_PASSWORD"));
-		}
-	}
 }
