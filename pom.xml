@@ -8,10 +8,10 @@
 		<version>2.3.3.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>pc.my</groupId>
-	<artifactId>be-fit</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>befit</name>
+	<groupId>com.pepa.befit</groupId>
+	<artifactId>be-fit-be</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<name>be-fit-be</name>
 	<description>REST API Service for befit app</description>
 
 	<properties>
